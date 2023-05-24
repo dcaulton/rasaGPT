@@ -1,0 +1,111 @@
+version: "3.1"
+
+nlu:
+
+- intent: greet
+  examples: |
+    - hi
+    - hello
+    - hey there
+    - good morning
+    - good afternoon
+    - Hey
+    - Are you there?
+
+- intent: goodbye
+  examples: |
+    - bye
+    - goodbye
+    - see you later
+    - ciao
+
+
+- intent: chat
+  examples: |
+    - How can I access?
+    - What is the purpose?
+    - Why can't I access?
+    - I want to send
+    - Do we have any activities?
+    - How do I share?
+    - How can I see?
+    - Tell me about
+    - Talk to me about
+    - Explain this text to me
+    - Correct this text for me
+    - Make this sound more professional
+    - put this in simple words
+    - translate this
+
+
+
+
+# version: "3.1"
+# nlu:
+
+# - regex: help
+#   examples: |
+#     - Help\s+ChatGTP
+#     - help\s+chatgtp
+
+# - intent: greet
+#   examples: |
+#     - hi
+#     - hello
+#     - hey there
+#     - good morning
+#     - good afternoon
+#     - Hey
+#     - Are you there?
+
+# - intent: ask_chat
+#   examples: |
+#     - Can we talk?
+#     - I want to chat
+#     - Let's talk about something
+#     - Let's chat about something
+#     - Let's chat
+# - intent: goodbye
+#   examples: |
+#     - bye
+#     - goodbye
+#     - see you later
+#     - ciao
+
+# - intent: faq/cost
+#   examples: |
+#       - How much does SimpliSafe cost?
+#       - How much does it cost?
+# - intent: faq/what_is
+#   examples: |
+#     - What is SimpliSafe?
+#     - What does SimpliSafe offer?
+# - intent: faq/cheapest
+#   examples: |
+#     - What is the cheapest package?
+#     - What's the cheapest SimpliSafe package?
+#     - What is the best deal?
+# - intent: faq/monitoring
+#   examples: |
+#     - What does SimpliSafe charge for monitoring?
+#     - What's the fee for monitoring?
+# - intent: faq/financing
+#   examples: |
+#     - Does SimpliSafe offer financing?
+#     - What are the financing options?
+
+# - intent: chat
+#   examples: |
+#     - Help ChatGPT Summarize the following text
+#     - Help ChatGPT Tell me about
+#     - Help ChatGPT Talk to me about
+#     - Help ChatGPT Explain this text to me
+#     - Help ChatGPT Correct this text for me
+#     - Help ChatGPT Make this sound more professional
+#     - Help ChatGPT put this in simple words
+#     - Help ChatGPT translate this
+    
+
+
+
+

@@ -1,0 +1,10 @@
+[
+  {
+    "name": "help",
+    "pattern": "Help\\s+ChatGTP"
+  },
+  {
+    "name": "help",
+    "pattern": "help\\s+chatgtp"
+  }
+]

@@ -1,0 +1,11 @@
+2023-03-13 16:12:19,321 [INFO ]  Starting Rasa server on http://0.0.0.0:5005
+2023-03-13 16:12:20,669 [INFO ]  Loading model models\20230313-160234-asphalt-brownstone.tar.gz...
+2023-03-13 16:12:46,962 [INFO ]  Rasa server is up and running.
+2023-03-13 16:14:29,024 [ERROR]  Exception occurred while handling uri: 'ws://127.0.0.1:5005/socket.io/?EIO=4&transport=websocket&sid=6e_d_NRoZkrcvgERAAAA'
+Traceback (most recent call last):
+  File "handle_request", line 124, in handle_request
+sanic.exceptions.ServerError: Invalid response type None (need HTTPResponse)
+2023-03-13 16:14:29,344 [ERROR]  Task was destroyed but it is pending!
+task: <Task pending name='Task-11' coro=<AsyncServer._service_task() running at c:\users\cralas1\rasatest\venv\lib\site-packages\engineio\asyncio_server.py:498> wait_for=<Future pending cb=[<TaskWakeupMethWrapper object at 0x000001A7B8564160>()]>>
+2023-03-13 16:14:29,361 [ERROR]  Task was destroyed but it is pending!
+task: <Task pending name='Task-61' coro=<AsyncSocket.schedule_ping.<locals>.send_ping() done, defined at c:\users\cralas1\rasatest\venv\lib\site-packages\engineio\asyncio_socket.py:125> wait_for=<Future pending cb=[<TaskWakeupMethWrapper object at 0x000001A7B85B9460>()]>>

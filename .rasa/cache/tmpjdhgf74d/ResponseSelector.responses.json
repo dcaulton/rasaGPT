@@ -1,0 +1,27 @@
+{
+  "utter_faq/cost": [
+    {
+      "text": "Expect to spend at least $245 on SimpliSafe equipment. Professional monitoring starts at $17.99 per month. This is more affordable than the national average—nearly $32 per month—but not the cheapest price on the market."
+    }
+  ],
+  "utter_faq/what_is": [
+    {
+      "text": "SimpliSafe is a no-contract, DIY-installed alarm system that offers affordable professional monitoring plans so someone is always keeping an eye on your house. And that includes protection from things like fires, floods, and carbon monoxide leaks."
+    }
+  ],
+  "utter_faq/cheapest": [
+    {
+      "text": "SimpliSafe’s cheapest equipment package is The Foundation, which costs $245 and includes a base station, keypad, door/window sensor, and motion sensor. This is enough to cover one exterior door and one ground-level room."
+    }
+  ],
+  "utter_faq/monitoring": [
+    {
+      "text": "SimpliSafe’s professional monitoring starts at $17.99 for the Standard Monitoring plan. The Interactive Monitoring plan costs $27.99 and includes extras like video alarm verification, secret alerts, and smart home integrations."
+    }
+  ],
+  "utter_faq/financing": [
+    {
+      "text": "Yes, SimpliSafe offers financing through Affirm. It takes just a couple of minutes to sign up for Affirm when you’re ready to check out. Look at the terms carefully—some options affect your credit score and accrue interest."
+    }
+  ]
+}

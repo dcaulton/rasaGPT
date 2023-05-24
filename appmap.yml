@@ -1,0 +1,4 @@
+language: python
+name: Rasa_ChatGPT
+packages:
+- path: Rasa_ChatGPT

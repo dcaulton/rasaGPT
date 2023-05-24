@@ -1,0 +1,38 @@
+version: "3.1"
+
+stories:
+
+- story: greet
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- story: chat with GPT3
+  steps:
+  - intent: chat
+  - action: action_chatgpt
+
+
+
+
+# version: "3.1"
+
+# stories:
+# - story: greet
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+  
+
+# - story: say goodbye
+#   steps:
+#   - intent: goodbye
+#   - action: utter_goodbye
+
+# - story: chat with GPT3
+#   steps:
+#   - intent: ask_chat
+#   - action: utter_ask_chat
+#   - intent: chat
+#   - action: action_chatgpt
+

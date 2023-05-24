@@ -1,0 +1,34 @@
+recipe: default.v1
+assistant_id: 20230303-132941-slow-interest
+
+
+
+
+version: "3.1"
+language: en
+pipeline:
+- name: WhitespaceTokenizer
+- name: LanguageModelFeaturizer
+  model_name: "bert"
+  model_weights: "rasa/LaBSE"
+#- name: RegexFeaturizer
+- name: DIETClassifier
+  epochs: 200
+  learning_rate: 0.001
+  constrain_similarities: true
+- name: ResponseSelector
+  epochs: 200
+  learning_rate: 0.001
+  constrain_similarities: true
+- name: EntitySynonymMapper
+- name: FallbackClassifier
+  threshold: 0.6
+  ambiguity_treshold: 0.1
+
+policies:
+- name: MemoizationPolicy
+- name: TEDPolicy
+  epochs: 200
+- name: RulePolicy
+
+
