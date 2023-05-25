@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import openai
 import os
+import time
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -199,11 +200,22 @@ class ActionChatGPT(Action):
         # data = run_prompt_3_5(input_txt, knowledge, conversation_summary).split('\n')
         # while("" in data):
         #     data.remove("")
-        global conversation_summary
-        data = run_prompt_3_5(input_txt, knowledge, conversation_summary).split('\n')
-        while("" in data):
-             data.remove("")
-        data = (" ").join(data)
+        try:
+            global conversation_summary
+            data = run_prompt_3_5(input_txt, knowledge, conversation_summary).split('\n')
+            while("" in data):
+                    data.remove("")
+            data = (" ").join(data)
+            dispatcher.utter_message(data)
+            
+        except openai.error.RateLimitError as e:
+            dispatcher.utter_message("I apologize, I am currently overloaded with requests, I will have your answer in a few moments...")
+            time.sleep(5)
+            data = run_prompt_3_5(input_txt, knowledge, conversation_summary).split('\n')
+            while("" in data):
+                    data.remove("")
+            data = (" ").join(data)
+            dispatcher.utter_message(data)
 
         #add Q&A to a list tracking the conversation
         history.append({"role": "user", "content" :input_txt}) 
@@ -227,7 +239,7 @@ class ActionChatGPT(Action):
         # ]
         # )
         # chat_response = response['choices'][0]['message']['content']
-        dispatcher.utter_message(data)
+        # dispatcher.utter_message(data)
         #summarise transcription for question answer function (this is after the results to reduce wait time)
         conversation_summary = summarise_history_3_5(transcript)
         print(conversation_summary)
