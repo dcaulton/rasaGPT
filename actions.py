@@ -111,7 +111,17 @@ class ActionChatGPT(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         input_txt = tracker.latest_message.get('text')
-        openai.api_key = os.environ["OPENAI_API_KEY"]
+        if "clear your memory" or "forget everything" in input_txt:
+            question_summary = ''
+            history = []
+            conversation_summary = ''
+            transcript = ''
+            knowledge = ''
+        with open("keys/API_key.txt", "r") as f:
+            my_API_key = f.read()
+            my_API_key = my_API_key.strip()     
+
+        openai.api_key = my_API_key
 
 
 
@@ -181,7 +191,7 @@ class ActionChatGPT(Action):
         
         #Take the users side of the conversation and summarise into a coherent question (as the chat evolves)
         #input_txt = input('Ask your question...')
-        global question_summary
+        #global question_summary
         question_summary = question_summary + '. ' + input_txt
 
         search_txt = summarise_question(question_summary)
@@ -201,7 +211,7 @@ class ActionChatGPT(Action):
         # while("" in data):
         #     data.remove("")
         try:
-            global conversation_summary
+           # global conversation_summary
             data = run_prompt_3_5(input_txt, knowledge, conversation_summary).split('\n')
             while("" in data):
                     data.remove("")
