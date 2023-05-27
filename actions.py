@@ -87,7 +87,7 @@ def K_BOT(input_question):
 
     #Identify outliers
     df_outliers = find_outliers_IQR(df_knowledge['cos_sim_log']).to_frame().reset_index(level=0, inplace=False)
-    
+console.log(template({ doesWhat: "rocks!" }));    
     #Create df of potential answers
     df_answers = df_knowledge[['index','Link','Description','cos_sim_max','cos_sim_log',]].sort_values(by=['cos_sim_max'], 
                                                                         ascending = False).head(len(df_outliers['index']))
@@ -193,9 +193,15 @@ class ActionChatGPT(Action):
         #input_txt = input('Ask your question...')
         #global question_summary
         question_summary = question_summary + '. ' + input_txt
-
+        
+        try:
         search_txt = summarise_question(question_summary)
-        print(search_txt )
+        print(search_txt)
+
+        except openai.error.RateLimitError as e:
+        dispatcher.utter_message("I apologize, I am currently overloaded with requests, I will have your answer in a few moments...")
+        time.sleep(5)
+        search_txt = summarize_question(question_summary)
 
         #Search and return relevant docs from the knowledge base
         df_answers = K_BOT (search_txt)
