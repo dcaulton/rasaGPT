@@ -87,7 +87,7 @@ def K_BOT(input_question):
 
     #Identify outliers
     df_outliers = find_outliers_IQR(df_knowledge['cos_sim_log']).to_frame().reset_index(level=0, inplace=False)
-console.log(template({ doesWhat: "rocks!" }));    
+
     #Create df of potential answers
     df_answers = df_knowledge[['index','Link','Description','cos_sim_max','cos_sim_log',]].sort_values(by=['cos_sim_max'], 
                                                                         ascending = False).head(len(df_outliers['index']))
@@ -167,7 +167,7 @@ class ActionChatGPT(Action):
         # This is the function which produces a response to the users question
         def run_prompt_3_5(prompt,context,summary):
 
-            messages = [{"role": "system", "content" :"you are EverConnect, find an answer in the following knowledge base, feel free to ask questions and make suggestions, reference your answers where possible with the document id\n\n" + context + '\n\n' + summary + '\n\n'},
+            messages = [{"role": "system", "content" :"you are EverConnect a helpful assistant from the company Foundever, previously known as Sitel, find an answer in the following knowledge base, feel free to ask questions and make suggestions, reference your answers where possible with the document id\n\n" + context + '\n\n' + summary + '\n\n'},
                 
                         {"role": "user", "content" :"please answer my question"},
                         {"role": "assistant", "content" :"here are some suggestions, you can find more info here [document ID]"},
@@ -195,13 +195,13 @@ class ActionChatGPT(Action):
         question_summary = question_summary + '. ' + input_txt
         
         try:
-        search_txt = summarise_question(question_summary)
-        print(search_txt)
+            search_txt = summarise_question(question_summary)
+            print(search_txt)
 
         except openai.error.RateLimitError as e:
-        dispatcher.utter_message("I apologize, I am currently overloaded with requests, I will have your answer in a few moments...")
-        time.sleep(5)
-        search_txt = summarize_question(question_summary)
+            dispatcher.utter_message("I apologize, I am currently overloaded with requests, I will have your answer in a few moments...")
+            time.sleep(5)
+            search_txt = summarize_question(question_summary)
 
         #Search and return relevant docs from the knowledge base
         df_answers = K_BOT (search_txt)
@@ -226,7 +226,20 @@ class ActionChatGPT(Action):
             
         except openai.error.RateLimitError as e:
             dispatcher.utter_message("I apologize, I am currently overloaded with requests, I will have your answer in a few moments...")
-            time.sleep(5)
+            time.sleep(2)
+            data = run_prompt_3_5(input_txt, knowledge, conversation_summary).split('\n')
+            while("" in data):
+                    data.remove("")
+            data = (" ").join(data)
+            dispatcher.utter_message(data)
+
+        except openai.error.InvalidRequestError as e:
+            dispatcher.utter_message("I apologize, I am currently overloaded with requests, I will have your answer in a few moments...")
+            time.sleep(2)
+            
+            # Trim knowledge variable due to OpenAI's token limit
+            knowledge = knowledge[:4000]
+
             data = run_prompt_3_5(input_txt, knowledge, conversation_summary).split('\n')
             while("" in data):
                     data.remove("")
@@ -247,16 +260,6 @@ class ActionChatGPT(Action):
             x=x+1
         transcript
 
-        # response = openai.ChatCompletion.create(
-        #     model = "gpt-3.5-turbo",
-        #     messages=[
-        #     {"role": "system", "content": "You are a helpful and professional assistant"},
-        #     {"role": "user", "content": prompt},
-        # ]
-        # )
-        # chat_response = response['choices'][0]['message']['content']
-        # dispatcher.utter_message(data)
-        #summarise transcription for question answer function (this is after the results to reduce wait time)
         conversation_summary = summarise_history_3_5(transcript)
         print(conversation_summary)
 
