@@ -1,36 +1,31 @@
 ## installation
 
-Beside rasa, you also need install `pyowm`:
+To install with the required dependencies
 
 ```bash
-pip install pyowm
+pip install -r requirements.txt
 ```
 
-## Training Rasa models
-```shell
-rasa train
-```
 
-## Start Rasa action server with OWM key
-```shell
-OWM_KEY=xxx rasa run actions
-```
+## Place your OpenAI Key on the API_key.txt file (without quotes)
 
-`xxx` is the API key we can get from https://openweathermap.org/
-
-## Start Rasa server
+## Start the Rasa core server
 ```bash
 rasa run --cors "*"
 ```
 
-## Start web client
+`xxx` is the API key we can get from https://openweathermap.org/
+
+## Start Rasa actions server (this contains the ChatGPT logic)
 ```bash
-python -m http.server
+rasa run --cors "*"
 ```
 
-Try to type some queries like `What's the weather today in Shanghai` and see the response.
+## Start HTML server
+```bash
+python -m server.py
+```
 
-Have Fun!
 
 
 ## Credits
