@@ -22,7 +22,7 @@ rasa run --cors "*"
 
 ## Start Rasa actions server (this contains the ChatGPT logic)
 ```bash
-rasa run --cors "*"
+rasa run actions
 ```
 
 ## Start HTML server
