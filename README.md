@@ -1,5 +1,11 @@
 ## installation
 
+Create a virutal environment
+
+```bash
+python -m venv <environment name>
+```
+
 To install with the required dependencies
 
 ```bash
