@@ -14,8 +14,6 @@ pip install -r requirements.txt
 rasa run --cors "*"
 ```
 
-`xxx` is the API key we can get from https://openweathermap.org/
-
 ## Start Rasa actions server (this contains the ChatGPT logic)
 ```bash
 rasa run --cors "*"
