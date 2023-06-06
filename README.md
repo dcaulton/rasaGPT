@@ -1,6 +1,6 @@
 ## Installation
 
-Create a virutal environment
+Create a virtual environment
 
 ```bash
 python -m venv <environment name>
