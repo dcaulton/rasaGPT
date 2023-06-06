@@ -1,4 +1,4 @@
-## installation
+## Installation
 
 Create a virutal environment
 
@@ -20,7 +20,7 @@ pip install -r requirements.txt
 rasa run --cors "*"
 ```
 
-## Start Rasa actions server (this contains the ChatGPT logic)
+## Start Rasa actions server (this contains the ChatGPT logic, it will take a few minutes to load because it downloads the HuggingFace embedding model)
 ```bash
 rasa run actions
 ```
