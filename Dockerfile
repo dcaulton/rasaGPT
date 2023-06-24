@@ -1,6 +1,6 @@
 FROM rasa/rasa
 ENTRYPOINT []
-CMD ['ls -latr']
+CMD []
 USER root
 RUN apt-get -y update && apt-get -y install \
   build-essential \
