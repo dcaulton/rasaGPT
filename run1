@@ -1,0 +1,1 @@
+docker run --network=host  rasa_gpt_nocommand:latest rasa run --cors "*"

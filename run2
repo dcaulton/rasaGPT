@@ -1,0 +1,1 @@
+docker run -p 5055:5055 rasa_gpt_nocommand:latest rasa run actions

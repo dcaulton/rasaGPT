@@ -1,0 +1,1 @@
+docker run -p 8000:8000 rasa_gpt_nocommand:latest python -m server.py
